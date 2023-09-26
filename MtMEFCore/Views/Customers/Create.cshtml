@@ -1,0 +1,59 @@
+﻿@model NewCustomerVM
+@using MtMEFCore.Data;
+@*
+@{
+
+    ViewData["Title"] = "Create new Customer";
+}*@
+
+<form asp-action="Create">
+    <div class="border pt-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Customer</h2>
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+
+        </div>
+         <div class="mb-3">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+             <span asp-validation-for="LastName" class="text-danger"></span>
+
+        </div>
+         <div class="mb-3">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+             <span asp-validation-for="Address" class="text-danger"></span>
+
+        </div>
+
+            <div class="mb-3">
+            <label asp-for="Phonenumber"></label>
+            <input asp-for="Phonenumber" class="form-control" />
+             <span asp-validation-for="Phonenumber" class="text-danger"></span>
+
+        </div>
+                            <div class="form-group">
+                                <label asp-for="ShopIds" class="control-label"></label>
+                                @*Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.ShopIds, null, new { @class ="form-control" })*@
+                                <select asp-for="ShopIds" class="form-control" asp-items="ViewBag.Shops" multiple></select>
+                                <span asp-validation-for="ShopIds" class="text-danger"></span>
+                            </div>
+
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a class="btn btn-secondary" asp-controller="Customers" asp-action="Index" style="width:150px">Back</a>
+
+    </div>
+
+</form>
+
+             @section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
